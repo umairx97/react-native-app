@@ -1,12 +1,12 @@
-import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { Constants } from "expo";
+import React, { Component } from "react";
+import { Text, View, StyleSheet, TextInput } from "react-native";
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text> App Works Great </Text>
+        <TextInput placeholder="Enter Something" placeholderTextColor="gray" />
       </View>
     );
   }
@@ -15,9 +15,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#fff",
     justifyContent: "center",
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#ecf0f1",
-    padding: 8
+    alignItems: "center"
   }
 });
