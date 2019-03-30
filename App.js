@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
+import LoginPage from "./src/components/LoginPage";
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> App Works Great </Text>
-        <TextInput placeholder="Enter Something" placeholderTextColor="gray" />
+        <Text>Import Components to see different UI's</Text>
       </View>
     );
   }
@@ -15,8 +15,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "center"
   }
 });
