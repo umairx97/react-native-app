@@ -9,7 +9,8 @@ import {
   TouchableHighlight,
   Image,
   Alert,
-  ImageBackground
+  ImageBackground,
+  KeyboardAvoidingView
 } from "react-native";
 
 export default class LoginPage extends Component {
@@ -31,57 +32,70 @@ export default class LoginPage extends Component {
         }}
         style={styles.backgroundImage}
       >
-        <View style={styles.inputContainer}>
-          <Image
-            style={styles.inputIcon}
-            source={{
-              uri: "https://png.icons8.com/message/ultraviolet/50/3498db"
-            }}
-          />
-          <TextInput
-            style={styles.inputs}
-            placeholder="Email"
-            keyboardType="email-address"
-            underlineColorAndroid="transparent"
-            onChangeText={email => this.setState({ email })}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Image
-            style={styles.inputIcon}
-            source={{
-              uri: "https://png.icons8.com/key-2/ultraviolet/50/3498db"
-            }}
-          />
-          <TextInput
-            style={styles.inputs}
-            placeholder="Password"
-            secureTextEntry={true}
-            underlineColorAndroid="transparent"
-            onChangeText={password => this.setState({ password })}
-          />
-        </View>
-
-        <TouchableHighlight
-          style={[styles.buttonContainer, styles.loginButton]}
-          onPress={() => this.onClickListener("login")}
+        <View style={styles.overlay} />
+        <Text
+          style={{
+            color: "white",
+            fontSize: 40,
+            fontWeight: "bold",
+            marginBottom: 20
+          }}
         >
-          <Text style={styles.loginText}>Login</Text>
-        </TouchableHighlight>
+          Login
+        </Text>
+        <KeyboardAvoidingView>
+          <View style={styles.inputContainer}>
+            <Image
+              style={styles.inputIcon}
+              source={{
+                uri: "https://png.icons8.com/message/ultraviolet/50/3498db"
+              }}
+            />
+            <TextInput
+              style={styles.inputs}
+              placeholder="Email"
+              keyboardType="email-address"
+              underlineColorAndroid="transparent"
+              onChangeText={email => this.setState({ email })}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Image
+              style={styles.inputIcon}
+              source={{
+                uri: "https://png.icons8.com/key-2/ultraviolet/50/3498db"
+              }}
+            />
+            <TextInput
+              style={styles.inputs}
+              placeholder="Password"
+              secureTextEntry={true}
+              underlineColorAndroid="transparent"
+              onChangeText={password => this.setState({ password })}
+            />
+          </View>
 
-        <TouchableHighlight
-          style={styles.buttonContainer}
-          onPress={() => this.onClickListener("restore_password")}
-        >
-          <Text style={{ color: "white" }}>Forgot your password?</Text>
-        </TouchableHighlight>
+          <TouchableHighlight
+            style={[styles.buttonContainer, styles.loginButton]}
+            onPress={() => this.onClickListener("login")}
+          >
+            <Text style={styles.loginText}>Login</Text>
+          </TouchableHighlight>
 
-        <TouchableHighlight
-          style={styles.buttonContainer}
-          onPress={() => this.onClickListener("register")}
-        >
-          <Text style={{ color: "white" }}>Register</Text>
-        </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.buttonContainer}
+            onPress={() => this.onClickListener("restore_password")}
+          >
+            <Text style={{ color: "white" }}>Forgot your password?</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight
+            style={styles.buttonContainer}
+            onPress={() => this.onClickListener("register")}
+          >
+            <Text style={{ color: "white" }}>Register</Text>
+          </TouchableHighlight>
+        </KeyboardAvoidingView>
       </ImageBackground>
     );
   }
@@ -95,14 +109,13 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   inputContainer: {
-    borderBottomColor: "#F5FCFF",
-    borderRadius: 30,
-    borderBottomWidth: 1,
+    borderRadius: 50,
     width: 250,
     height: 45,
     marginBottom: 20,
     flexDirection: "row",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "white"
   },
   inputs: {
     height: 45,
@@ -129,5 +142,9 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: "white"
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0,0,0,0.4)"
   }
 });
